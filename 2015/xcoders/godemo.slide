@@ -1,0 +1,308 @@
+A Tour of Go
+9 Apr 2015
+
+Andrew Carter
+Flipboard
+acarter@flipboard.com
+http://ascarter.net
+@ascarter
+
+* Why Would I Use Go?
+
+* Go for Mobile Developers
+
+Easy to learn
+
+Fast and efficient
+
+Outputs are easy to manage
+
+Excellent fit for C programmers
+
+Complements applications you build:
+
+- Tools
+- Services
+- Support components
+
+* What is Go?
+
+* Go in a Nutshell
+
+Go is for building systems
+
+Modern take on languages like C and Java
+
+Fast, efficient, highly scalable
+
+Created at Google by Robert Griesemer, Rob Pike, and Ken Thompson with Russ Cox
+
+* Goals
+
+Go built as response to frustrations with existing languages and environments
+
+Combines ease of programming an interpreted dynamic language with efficiency and safety of statically typed compiled language
+
+Built for networked multicore computing
+
+Fast
+
+[[http://talks.golang.org/2012/splash.article][Go at Google]]
+
+* How is Go different?
+
+Go has *types* and *methods* but no type hierarchy
+
+Type inference
+
+Naming conventions specify visibility
+
+* How is Go different?
+
+Concurrency built into the language
+
+- Go routines instead of threads
+- Channels instead of shared memory
+- Influenced by Communicating Sequential Processes theory (message passing)
+
+* How is Go different?
+
+No exceptions (but there are *panic*/*recover*)
+
+No generics (but there is *interface{}*)
+
+Binaries are self-contained
+
+Tools and style are very important
+
+* Where to use Go?
+
+Concurrent servers
+Backend and middle tier services
+Map/Reduce
+Async workers
+Parallel processing
+
+* Controversial Choices
+
+Missing language features:
+
+- Generics
+- Exceptions
+- Inheritance
+
+Go tool requires a *workspace*
+
+Using case to specify visibility
+
+Lacking "modern" language innovations
+
+No formal package management
+
+Go isn't doing anything "new"
+
+* Tour of Go
+
+* Getting Started
+
+- [[http://tour.golang.org][A Tour of Go]]
+- [[http://golang.org/doc/code.html][How to Write Go Code]]
+- [[http://golang.org/doc/effective_go.html][Effective Go]]
+- [[http://golang.org/ref/spec][The Go Programming Language Specification]]
+
+* Installation
+
+Official Distributions:
+
+- [[http://golang.org/doc/install]]
+
+Mac OS X
+
+	brew install go
+
+Ubuntu
+
+	sudo apt-get install golang
+
+* Workspace
+
+Create a workspace
+
+	$ mkdir $HOME/go
+	$ export GOPATH=$HOME/go
+	$ export PATH=$PATH:$GOPATH/bin
+
+* Basics
+
+Development is done in a *workspace*
+Code lives in *packages*
+*import* references other packages
+*func* defines a function or method and can return tuples
+Types include *integer*, *floating*point*, *byte*, *boolean*, and *string*
+Variables have *static*type* and can be inferred
+
+* hello.go
+
+.play hello.go
+
+*package*main* defines executable package
+*import* creates references to *fmt* and *time* packages in standard library
+*func*main()* is entry point for a command
+*t* and *s* infer type based on the value set
+
+* tuples.go
+
+.play tuples.go
+
+*func* can return tuples
+Collections include *array*, *slice*, and *map*
+
+* closures.go
+
+.play closures.go
+
+Can *defer* function to be run after function completes
+Closures as anonymous *func*
+
+* composition.go
+
+.play composition.go
+
+Primary custom data type is *struct* and can have methods
+Named collection of method signatures is an *interface*
+*Pointers* (but no arithmetic)
+
+* interfaces.go
+
+.play interfaces.go
+
+* Concurrency
+
+Async supported by goroutine using *go*myFunc()*
+Communication between goroutines via *channel*
+
+Use *select* for receiving from multiple channels concurrently
+
+- Pick first channel that is ready and receive/send to it
+- If more than one ready, randomly pick
+- Block if none are ready
+
+* concurrent.go
+
+.play concurrent.go
+
+* select.go
+
+.play select.go
+
+* Standard Library
+
+Extensive support
+
+- Persistance (*database/sql*, *io*, *tar*, *zip*)
+- Cryptography (*aes*, *dsa*, *hmac*, *md5*, *rsa*, *sha*)
+- Encoding (*base64*, *json*, *xml*)
+- HTML templates
+- Net (*http*, *rpc*)
+- OS (*exec*, *signal*)
+- RegEx
+- Strings
+- Testing
+- Time
+- Unicode
+
+* Network Services
+
+Standard networks services
+
+- *net* has TCP/UDP socket server and helpers
+- *net/http* fast and complete HTTP client/server
+- Upcoming *http2* support (no code changes needed if using *net/http*)
+- Custom multiplexers can be written
+- Customizable formatters including *json* and *xml*
+
+Not necessary to use web framework (standard library very complete)
+
+* webserver.go
+
+.code webserver.go
+
+* Go in Production
+
+* Building
+
+Binaries are totally self-contained
+*scp* to a server and run it
+Cross-compile to target architectures
+
+* Operating System Platforms
+
+- Linux
+- Mac OS X
+- FreeBSD
+- Windows
+
+* Cloud Services
+
+* Hosted
+
+- [[https://cloud.google.com/appengine/docs/go/][Google AppEngine]]
+- [[https://github.com/kr/heroku-buildpack-go][Heroku Buildpack: Go]]
+
+* General Compute
+
+- [[https://cloud.google.com/compute/docs/][Google Compute Engine]]
+- [[http://aws.amazon.com/ec2/][Amazon Web Services EC2]]
+- [[https://azure.microsoft.com/en-us/][Microsoft Azure]]
+- [[http://www.rackspace.com/cloud][Rackspace]]
+
+* Cloud SDK
+
+- [[https://github.com/google/google-api-go-client][Google APIs Client Library for Go]]
+- [[https://github.com/awslabs/aws-sdk-go][AWS SDK for Go]]
+- [[https://github.com/MSOpenTech/azure-sdk-for-go][Azure SDK for Go]]
+- [[https://github.com/rackspace/gophercloud][Gophercloud: OpenStack SDK for Go]]
+
+* Future of Go
+
+* Go in 2015
+
+Project has moved to [[https://github.com/golang][GitHub]]
+
+Go 1.5 will be self-hosted
+
+New concurrent garbage collector (vs. mark and sweep)
+
+HTTP/2 support (using *net/http*)
+
+Details - [[https://talks.golang.org/2015/state-of-go.slide][State of Go 2015]]
+
+* Go on Mobile
+
+Mobile support is coming for Android and iOS
+
+_Android_
+
+- Directly build APK (*go*mobile*)
+- NDK support
+- Bindings between Go and Java
+
+_iOS_
+
+- New *darwin/arm* build target
+- Experimental
+
+* Useful Information
+
+- This presentation is at [[http://github.com/ascarter/godemo]]
+- [[http://golang.org]]
+- [[https://groups.google.com/group/golang-nuts]]
+- *#go-nuts* on irc.freenode.net
+- [[https://twitter.com/golang][@golang]] on Twitter
+- [[https://godoc.org]]
+- [[http://play.golang.org]]
+- [[http://golang-book.com]]
+- [[https://gobyexample.com]]
+- [[http://gopheracademy.com]]
+- [[http://golangweekly.com]]
+
