@@ -1,0 +1,22 @@
+When Less Is More: Examples in Go
+14 July 2015
+
+Andrew Carter
+Flipboard
+acarter@flipboard.com
+http://www.flipboard.com
+@ascarter
+
+* Example #1 - Building a web service
+
+Go has a batteries include web server
+Supports building web services using just the standard library
+Simple contructs for writing handlers
+
+* webserver.go
+
+.code flipcon/webserver.go
+
+* Example #2 - Types and Interfaces instead of Classes
+
+* Example #3 - Concurrency and Go routines
