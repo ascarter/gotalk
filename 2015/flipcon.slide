@@ -9,14 +9,16 @@ http://www.flipboard.com
 
 * Example #1 - Building a web service
 
-Go has a batteries include web server
-Supports building web services using just the standard library
+Go has a *batteries*included* web server
+Build web services using just the standard library
 Simple contructs for writing handlers
 
-* webserver.go
-
-.code flipcon/webserver.go
+.play flipcon/webserver.go
 
 * Example #2 - Types and Interfaces instead of Classes
 
+.play flipcon/interfaces.go
+
 * Example #3 - Concurrency and Go routines
+
+.play flipcon/concurrency.go

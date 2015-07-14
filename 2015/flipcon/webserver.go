@@ -1,23 +1,18 @@
 package main
 
 import (
-	"encoding/json"
+	"fmt"
+	"log"
 	"net/http"
 )
 
-type Todo struct {
-	Name      string `json:"name"`
-	Completed bool   `json:"completed"`
-}
-
-type Todos []Todo
-
-func index(w http.ResponseWriter, r *http.Request) {
-	todos := []Todo{Todo{Name: "write presentation"}, Todo{Name: "host meetup"}}
-	json.NewEncoder(w).Encode(todos)
+func hello(w http.ResponseWriter, req *http.Request) {
+	log.Println(req.URL)
+	fmt.Fprintf(w, "Hello!\nURL = %s\n", req.URL)
 }
 
 func main() {
-	http.HandleFunc("/", index)
-	http.ListenAndServe(":9000", nil)
+	fmt.Println("Listening on localhost:7777/hello")
+	http.HandleFunc("/hello", hello)
+	log.Fatal(http.ListenAndServe(":7777", nil))
 }
