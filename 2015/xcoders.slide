@@ -143,7 +143,7 @@ Variables have *static*type* and can be inferred
 
 * hello.go
 
-.play hello.go
+.play xcoders/hello.go
 
 *package*main* defines executable package
 *import* creates references to *fmt* and *time* packages in standard library
@@ -152,21 +152,21 @@ Variables have *static*type* and can be inferred
 
 * tuples.go
 
-.play tuples.go
+.play xcoders/tuples.go
 
 *func* can return tuples
 Collections include *array*, *slice*, and *map*
 
 * closures.go
 
-.play closures.go
+.play xcoders/closures.go
 
 Can *defer* function to be run after function completes
 Closures as anonymous *func*
 
 * composition.go
 
-.play composition.go
+.play xcoders/composition.go
 
 Primary custom data type is *struct* and can have methods
 Named collection of method signatures is an *interface*
@@ -174,7 +174,7 @@ Named collection of method signatures is an *interface*
 
 * interfaces.go
 
-.play interfaces.go
+.play xcoders/interfaces.go
 
 * Concurrency
 
@@ -189,11 +189,11 @@ Use *select* for receiving from multiple channels concurrently
 
 * concurrent.go
 
-.play concurrent.go
+.play xcoders/concurrent.go
 
 * select.go
 
-.play select.go
+.play xcoders/select.go
 
 * Standard Library
 
@@ -225,7 +225,7 @@ Not necessary to use web framework (standard library very complete)
 
 * webserver.go
 
-.code webserver.go
+.code xcoders/webserver.go
 
 * Go in Production
 
